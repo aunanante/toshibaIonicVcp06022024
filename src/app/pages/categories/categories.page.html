@@ -1,0 +1,111 @@
+<!-- categories.page.html -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary"> 
+    <ion-title>
+      Categories
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Row 1: List of Commerces -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-title style="font-weight: bold;">List of Commerces</ion-title>
+      <ion-list style="height: 120px; overflow-y: auto; margin-bottom: 10px;">
+        <ion-item *ngFor="let commerce of commerces" (click)="selectCommerce(commerce.id)">
+          <ion-label [style.background-color]="selectedCommerceId === commerce.id ? 'lightblue' : 'inherit'">
+            {{ commerce.commercename }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <!-- categories.page.html -->
+
+  <!-- Row 2: List of Categories of the Selected Commerce -->
+  <ion-row *ngIf="selectedCommerceId">
+    <ion-col size="12">
+      <ion-title style="font-weight: bold;">List of Categories</ion-title>
+      <ion-list style="height: 200px; overflow-y: auto;">
+        <ion-item *ngFor="let category of categories" (click)="selectCategory(category)">
+          <ion-label [style.background-color]="selectedCategory === category ? 'lightgrey' : 'inherit'">
+            {{ category.categoryname }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+
+  <!-- Row 3: Details of Selected Category -->
+  <ion-row *ngIf="selectedCategory">
+    <ion-col size="12">
+      <ion-title style="font-weight: bold;">{{ categoryDetailsTitle }}</ion-title>
+      <form [formGroup]="categoryForm">
+        <ion-item>
+          <ion-label position="stacked">Category Name</ion-label>
+          <ion-input formControlName="categoryname" placeholder="Enter category name"></ion-input>
+        </ion-item>
+
+        <!-- Display read-only fields -->
+        <ion-item>
+          <ion-label position="stacked">Business Owner ID</ion-label>
+          <ion-input formControlName="business_owner_id" readonly></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Ville ID</ion-label>
+          <ion-input formControlName="ville_id" readonly></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Commerce ID</ion-label>
+          <ion-input formControlName="commerce_id" readonly></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Created At</ion-label>
+          <ion-input formControlName="created_at" readonly></ion-input>
+        </ion-item>
+      </form>
+    </ion-col>
+
+  </ion-row>
+
+</ion-content>
+
+<ion-footer class="myColor">
+  <div class="form-buttons">
+    <!-- Buttons for submit, update, delete, and new -->
+    <ion-row class="ion-align-items-center">
+      <ion-col size="3">
+        <button (click)="openCreateCategoryModal()" class="tooltip">
+          <ion-icon name="add-circle"></ion-icon>
+          <span class="tooltiptext">Create a Category</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="openUpdateCategoryModal()" class="tooltip">
+          <ion-icon name="create"></ion-icon>
+          <span class="tooltiptext">Update a Category</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="openDeleteCategoryModal()" class="tooltip">
+          <ion-icon name="trash-bin"></ion-icon>
+          <span class="tooltiptext">Delete</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="resetForm()" class="tooltip">
+          <ion-icon name="refresh"></ion-icon>
+          <span class="tooltiptext">New</span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>

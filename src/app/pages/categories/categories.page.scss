@@ -1,0 +1,47 @@
+/* categories.page.scss */
+
+ion-item.selected {
+    background-color: lightblue;
+  }
+  
+  .myColor {
+    background-color: aqua;
+  }
+
+  ion-content{
+    --background:#6018e7;
+  }
+
+  /* Style the form button container */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+  margin: 10px 0; /* Add margin to the container */
+}
+
+/* Style each button and its tooltip */
+button.tooltip {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Make each button occupy 25% of the container */
+  max-width: 100px; /* Set a maximum width for each button */
+}
+
+/* Style the icon within the button */
+button.tooltip ion-icon {
+  font-size: 36px; /* Adjust the icon size as needed */
+  color: blue; /* Change the icon color to blue */
+}
+
+/* Style the icon within the button */
+button.tooltip ion-icon {
+  font-size: 24px; /* Adjust the icon size as needed (e.g., 24px) */
+  color: blue; /* Change the icon color to blue */
+}

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Update Product: {{ product?.productname }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true" color="secondary">
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+    <!-- Product Name -->
+    <ion-item>
+      <ion-label position="floating">Product Name</ion-label>
+      <ion-input formControlName="productname" required  (ionChange)="onInputChange($event)"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Reference</ion-label>
+      <ion-input formControlName="reference" (ionChange)="onInputChange($event)"></ion-input>
+    </ion-item>
+
+    <!-- Price -->
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input type="number" formControlName="price" required (ionChange)="onInputChange($event)"></ion-input>
+    </ion-item>
+
+    <!-- Description -->
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description" (ionChange)="onInputChange($event)"></ion-textarea>
+    </ion-item>
+
+    <!-- Image -->
+    <ion-item>
+      <ion-label position="floating">Image</ion-label>
+      <ion-input formControlName="image" readonly (ionChange)="onInputChange($event)"></ion-input>
+    </ion-item>
+
+
+
+    <!-- Image Upload Buttons -->
+    <!-- <ion-row>
+      <ion-col size="6">
+        <ion-button expand="full" (click)="captureImage()">Capture Image</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="full" (click)="selectImageFromGallery()">Select from Gallery</ion-button>
+      </ion-col>
+    </ion-row> -->
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-row justify-content-between>
+    <ion-col size="6">
+      <ion-button (click)="dismissModal()" expand="full" aria-label="Cancel">Cancel</ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="submitForm()" expand="full" aria-label="Confirm">Confirm</ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="takenWithCamera()" expand="full">Capture Image</ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="selectImageFromGallery()" expand="full">Select from Gallery</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Confirm Update Commerce</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="secondary">
+  <ion-list>
+    <ion-item>
+      <ion-label>Commerce Name:</ion-label>
+      <ion-text>{{ commerceData.commercename }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Services:</ion-label>
+      <ion-text>{{commerceData.services }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ville_id:</ion-label>
+      <ion-text>{{commerceData.ville_id }}</ion-text>
+    </ion-item>
+    <!-- Add more fields for updating commerce information -->
+  </ion-list>
+
+</ion-content> 
+
+<ion-footer>
+  <ion-row justify-content-between>
+    <ion-col size="6">
+      <ion-button expand="full" (click)="closeModal()">Cancel</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="full" (click)="confirm()">Confirm</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>  

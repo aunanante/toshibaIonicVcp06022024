@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="grid-container">
+    <!-- First row of the grid -->
+    <ion-row>
+      <!-- Left column -->
+      <ion-col size="6">
+        <ion-item>
+          <!-- <ion-label>Select Commerce:</ion-label> -->
+          <ion-select placeholder="Commerce" [(ngModel)]="selectedCommerce" (ionChange)="onCommerceChange()">
+            <ion-select-option *ngFor="let commerce of commerces" [value]="commerce.id">
+              {{ commerce.commercename }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-col>
+ 
+      <!-- Right column -->
+      <ion-col size="6">
+        <ion-item>
+          <!-- <ion-label>Select Category:</ion-label> -->
+          <ion-select placeholder="Category" [(ngModel)]="selectedCategory" (ionChange)="onCategoryChange()">
+            <ion-select-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.categoryname }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <!-- Second row of the grid -->
+    <ion-row>
+      <!-- Product Cards -->
+      <ion-list *ngIf="products.length > 0">
+        <ion-card *ngFor="let product of products" [class.selected]="isProductSelected(product.id)"
+          (click)="selectProduct(product)" [attr.id]="'product-' + product.id">
+
+          <img [src]="product.image" alt="Product Image">
+          <ion-card-header>
+            <ion-card-subtitle>ID: {{ product.id }}</ion-card-subtitle>
+            <ion-card-title>{{ product.productname }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Reference: {{ product.reference }}</p>
+            <p>Price: {{ product.price }}</p>
+            <p>Description: {{ product.description }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+
+      <!-- Empty Products Message -->
+      <div *ngIf="products.length === 0">
+        <p>No products available for the selected category.</p>
+      </div>
+    </ion-row>
+
+
+
+  </div>
+</ion-content>
+<ion-footer class="myColor">
+  <div class="form-buttons">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="3">
+        <button (click)="navigateToFirstProduct()" class="tooltip">
+          <ion-icon name="arrow-back"></ion-icon>
+          First
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="navigateToPreviousProduct()" class="tooltip">
+          <ion-icon name="caret-back"></ion-icon>
+          <span class="tooltiptext">Previous</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="navigateToNextProduct()" class="tooltip">
+          <ion-icon name="caret-forward"></ion-icon>
+          <span class="tooltiptext">Next</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="navigateToLastProduct()" class="tooltip">
+          <ion-icon name="arrow-forward"></ion-icon>
+          <span class="tooltiptext">Last</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="addProduct()" class="tooltip">
+          <ion-icon name="add"></ion-icon>
+          <span class="tooltiptext">Add</span>
+        </button>
+      </ion-col>  
+      <ion-col size="3">
+        <button (click)="updateProduct()" class="tooltip">
+          <ion-icon name="create"></ion-icon>
+          <span class="tooltiptext">Update</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="deleteProduct()" class="tooltip">
+          <ion-icon name="trash"></ion-icon>
+          <span class="tooltiptext">delete</span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>

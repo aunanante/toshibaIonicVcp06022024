@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Delete Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true" color="secondary">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p>Are you sure you want to delete the product "{{ product.productname }}"?</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-row justify-content-between>
+    <ion-col size="6">
+      <ion-button (click)="dismissModal()" expand="full" aria-label="Cancel">Cancel</ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button color="danger" (click)="deleteProduct()" expand="full" aria-label="Confirm">Confirm</ion-button>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModal()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="deleteProduct()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar> -->
+</ion-footer>

@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Add Product for {{ categoryname }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding" [fullscreen]="true" color="secondary">
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+    <!-- Product Name -->
+    <ion-item>
+      <ion-label position="floating">Product Name</ion-label>
+      <ion-input formControlName="productname" required></ion-input>
+    </ion-item>
+
+    <!-- Reference -->
+    <ion-item>
+      <ion-label position="floating">Reference</ion-label>
+      <ion-input formControlName="reference"></ion-input>
+    </ion-item>
+
+    <!-- Price -->
+    <!-- Price -->
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input type="number" formControlName="price" required></ion-input>
+      <div *ngIf="productForm.get('price')?.hasError('required') && (productForm.get('price')?.dirty || productForm.get('price')?.touched)">
+        <small class="text-danger">Price is required.</small>
+      </div>
+      <div *ngIf="productForm.get('price')?.hasError('required') && (productForm.get('price')?.dirty || productForm.get('price')?.touched)">
+        <small class="text-danger">Price is required and must be greater than or equal to 0.</small>
+      </div>      
+    </ion-item>
+
+
+    <!-- Description -->
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <!-- Image -->
+    <ion-item>
+      <ion-label position="floating">Image File</ion-label>
+      <ion-input formControlName="image" readonly required></ion-input>
+    </ion-item>
+
+    <!-- Automatically filled properties -->
+    <ion-item>
+      <ion-label position="floating">Business Owner ID</ion-label>
+      <ion-input formControlName="business_owner_id" [value]="business_owner_id" readonly></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label position="floating">Ville ID</ion-label>
+      <ion-input formControlName="ville_id" [value]="ville_id" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Commerce ID</ion-label>
+      <ion-input formControlName="commerce_id" [value]="commerceId" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Category ID</ion-label>
+      <ion-input formControlName="category_id" [value]="categoryId" readonly></ion-input>
+    </ion-item>
+
+
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-row justify-content-between>
+    <ion-col size="6">
+      <ion-button (click)="dismissModal()" expand="full" aria-label="Cancel">Cancel</ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="submitForm()" [disabled]="isConfirmDisabled()" expand="full" aria-label="Confirm">
+        Confirm
+      </ion-button> 
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="takenWithCamera()" expand="full">Capture Image</ion-button> 
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="selectImageFromGallery()" expand="full">Select from Gallery</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

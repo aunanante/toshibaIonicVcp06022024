@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        {{ product.productname }} Details
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- Display main product details -->
+    <ion-card>
+      <ion-img [src]="product.image" alt="Product Image"></ion-img>
+      <ion-card-header>
+        {{ product.productname }}
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Reference:</strong> {{ product.reference }}</p>
+        <p><strong>Price:</strong> {{ product.price | currency:'USD':true }}</p>
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        <!-- Add other product details as needed -->
+      </ion-card-content>
+    </ion-card>
+  
+    <!-- Display related details -->
+    <ion-list *ngIf="details.length > 0">
+      <ion-item *ngFor="let detail of details">
+        <ion-card>
+          <ion-img [src]="detail.image" alt="Detail Image"></ion-img>
+          <ion-card-header>
+            {{ detail.detailname }}
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Description:</strong> {{ detail.description }}</p>
+            <!-- Add other detail information as needed -->
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  
+    <!-- Display a message if no details are available -->
+    <ion-text *ngIf="details.length === 0">
+      No details available for this product.
+    </ion-text>
+  </ion-content>
+  

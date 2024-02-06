@@ -1,0 +1,45 @@
+
+
+<ion-content>
+  <!-- Your dashboard content here -->
+</ion-content>
+
+<!-- Define the split menu with auto-hide on small screens -->
+<ion-split-pane contentId="dashboard-content" when="lg">
+  <!-- Left menu (hidden on small screens) -->
+  <ion-menu contentId="dashboard-content" side="start" menuId="dashboard-menu">
+    <ion-header>
+      <ion-toolbar color="success">
+        <ion-title>{{ pageTitle }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="pink">
+      <ion-list>
+        <ion-button expand="full" color="secondary" routerLink="/villes-commerces" routerDirection="root">
+          Go to Villes-Commerces
+        </ion-button>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/user']" (click)="setPageTitle('User')">User</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/commerces']" (click)="setPageTitle('Commerces')">Commerces</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/categories']" (click)="setPageTitle('Categories')">Categories</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/products']" (click)="setPageTitle('Products')">Products</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/details']" (click)="setPageTitle('Details')">Details</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle autoHide="false">
+          <ion-item [routerLink]="['/dashboard/payments']" (click)="setPageTitle('Payments')">Payments</ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Main content -->
+  <ion-router-outlet id="dashboard-content"></ion-router-outlet>
+</ion-split-pane>

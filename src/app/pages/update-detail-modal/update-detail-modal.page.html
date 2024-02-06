@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      {{detail?.detailname}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="secondary">
+  <form [formGroup]="detailForm" (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label position="floating">Detail Name</ion-label>
+      <ion-input formControlName="detailname" (ionChange)="onInputChange($event)"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description" (ionChange)="onInputChange($event)"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Image</ion-label>
+      <ion-input formControlName="image" readonly (ionChange)="onInputChange($event)"></ion-input>
+    </ion-item>
+
+    <!-- Add more form fields if needed -->
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-row justify-content-between>
+    <ion-col size="6">
+      <ion-button (click)="dismissModal()" expand="full" aria-label="Cancel">Cancel</ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="submitForm()" expand="full" aria-label="Confirm">Confirm</ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="takenWithCamera()" expand="full">Capture Image</ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button (click)="selectImageFromGallery()" expand="full">Select from Gallery</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>
+

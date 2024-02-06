@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <!-- Add a back button to navigate back to the previous page -->
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        
+        <ion-title>
+            {{ commerceInfo.commercename }}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- Display Commerce Information -->
+    <ion-card>
+        <ion-card-header>
+            {{ commerceInfo.commercename }}
+        </ion-card-header>
+        <ion-card-content>
+            <p><strong>Business Owner:</strong> {{ commerceInfo.businessOwnerName }}</p>
+            <p><strong>Phone Number 1:</strong> {{ commerceInfo.businessOwnerPhone1 }}</p>
+            <p><strong>Phone Number 2:</strong> {{ commerceInfo.businessOwnerPhone2 }}</p>
+            <p><strong>Adresse:</strong> {{ commerceInfo.businessOwnerAdresse }}</p>
+            <p><strong>Ville:</strong> {{ commerceInfo.villeName }}</p>
+            <p><strong>Services:</strong> {{ commerceInfo.services }}</p>
+            <!-- Add additional fields as needed -->
+        </ion-card-content>
+    </ion-card>
+
+    <!-- Add other content as needed -->
+
+    <!-- Display Categories -->
+    <ion-card>
+        <ion-card-header>
+            Categories
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item *ngFor="let category of categories" (click)="openCategory(category.id)">
+                    {{ category.categoryname }}
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

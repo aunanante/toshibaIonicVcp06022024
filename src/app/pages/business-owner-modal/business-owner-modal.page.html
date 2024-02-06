@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Confirm Business Owner Creation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="secondary">
+  <ion-list>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-text>{{ businessOwnerData.email }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-text>{{ businessOwnerData.name }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-text>{{ businessOwnerData.adresse }}</ion-text>
+    </ion-item>
+    <!-- Include other fields here -->
+    <ion-item>
+      <ion-label>Telephone1</ion-label>
+      <ion-text>{{ businessOwnerData.telephone1 }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Telephone2</ion-label>
+      <ion-text>{{ businessOwnerData.telephone2 }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Monthly fee paid</ion-label>
+      <ion-text>{{ businessOwnerData.monthly_fee_paid }}</ion-text>
+    </ion-item>
+  </ion-list>
+
+  
+</ion-content> 
+
+<ion-footer>
+  <ion-row justify-content-between>
+    <ion-col size="6">
+      <ion-button expand="full" (click)="closeModal()">Cancel</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="full" (click)="confirm()">Confirm</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>  

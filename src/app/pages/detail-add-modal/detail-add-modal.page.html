@@ -1,0 +1,53 @@
+<!-- detail-add-modal.page.html -->
+
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>{{product.productname}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding" [fullscreen]="true" color="secondary">
+  <form [formGroup]="detailForm" (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label position="floating">Detail Name</ion-label>
+      <ion-input formControlName="detailname" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Image</ion-label>
+      <ion-input formControlName="image" readonly required></ion-input>
+    </ion-item>
+
+    <!-- Display the selected image URI -->
+    <ion-img [src]="detailForm.get('image')?.value" *ngIf="detailForm.get('image')?.value"></ion-img>
+
+
+  </form>
+</ion-content>
+
+<!-- detail-add-modal.page.html -->
+
+<ion-footer>
+  <ion-row justify-content-between>
+    <ion-col size="6">
+      <ion-button (click)="dismissModal()" expand="full">Cancel</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="submitForm()" [disabled]="isConfirmDisabled()" expand="full" aria-label="Confirm">
+        Confirm
+      </ion-button> 
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="takenWithCamera()" expand="full">Capture Image</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="selectImageFromGallery()" expand="full">Select from Gallery</ion-button>
+    </ion-col>
+    
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- Add a back button to navigate back to the previous page -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>
+      {{ categoryInfo.categoryname }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Display Category Information -->
+  <ion-card>
+    <ion-card-header>
+      {{ categoryInfo.categoryname }}
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Add other category information as needed -->
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Display Products of the Current Category -->
+  <ion-list>
+    <ion-item *ngFor="let product of products" (click)="viewProductDetails(product.id)">
+      <ion-card>
+        <ion-img [src]="product.image" alt="Product Image"></ion-img>
+        <ion-card-content>
+          <ion-card-title>{{ product.productname }}</ion-card-title>
+          <p><strong>Reference:</strong> {{ product.reference }}</p>
+          <p><strong>Price:</strong> {{ product.price | currency:'USD':true }}</p>
+          <p><strong>Description:</strong> {{ product.description }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

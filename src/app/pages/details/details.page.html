@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Details Page
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <!-- Select for choosing a commerce -->
+    <ion-col size="6">
+      <ion-item>
+        <!-- <ion-label>Select Commerce</ion-label> -->
+        <ion-select placeholder="Commerce" [(ngModel)]="selectedCommerce" (ionChange)="onCommerceChange()">
+          <!-- Populate options dynamically based on commerces array -->
+          <ion-select-option *ngFor="let commerce of commerces" [value]="commerce.id">
+            {{ commerce.commercename }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col> 
+ 
+    <!-- Second Row -->
+    <ion-row>
+      <!-- Select for choosing a category -->
+      <ion-col size="6">
+        <ion-item>
+          <!-- <ion-label>Select Category</ion-label> -->
+          <ion-select placeholder="Category" [(ngModel)]="selectedCategory" (ionChange)="onCategoryChange()">
+            <!-- Populate options dynamically based on categories array -->
+            <ion-select-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.categoryname }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <!-- Select for choosing a product -->
+      <ion-col size="6">
+        <ion-item>
+          <!-- <ion-label>Select Product</ion-label> -->
+          <ion-select placeholder="Product" [(ngModel)]="selectedProduct" (ionChange)="onProductChange()">
+            <!-- Populate options dynamically based on products array -->
+            <ion-select-option *ngFor="let product of products" [value]="product.id">
+              {{ product.productname }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <!-- Third Row -->
+<ion-row>
+  <ion-col size="12">
+    <!-- List of cards displaying details of the current product -->
+    <ion-card *ngFor="let detail of details; let i = index"
+              [class.selected]="isDetailSelected(i)" (click)="selectDetail(i)">
+      <ion-card-header>
+        {{ detail.detailname }}
+      </ion-card-header>
+      <img [src]="detail.image" alt="Detail Image">
+      <ion-card-content>
+        <ion-card-title>{{ detail.detailName }}</ion-card-title>
+        <p>{{ detail.description }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+
+
+
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="myColor">
+  <div class="form-buttons">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="3">
+        <button (click)="navigateToFirstDetail()" class="tooltip">
+          <ion-icon name="arrow-back"></ion-icon>
+          First
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="navigateToPreviousDetail()" class="tooltip">
+          <ion-icon name="caret-back"></ion-icon>
+          <span class="tooltiptext">Previous</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="navigateToNextDetail()" class="tooltip">
+          <ion-icon name="caret-forward"></ion-icon>
+          <span class="tooltiptext">Next</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="navigateToLastDetail()" class="tooltip">
+          <ion-icon name="arrow-forward"></ion-icon>
+          <span class="tooltiptext">Last</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="addDetail()" class="tooltip">
+          <ion-icon name="add"></ion-icon>
+          <span class="tooltiptext">Add</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="updateDetail()" class="tooltip">
+          <ion-icon name="create"></ion-icon>
+          <span class="tooltiptext">Update</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="deleteDetail()" class="tooltip">
+          <ion-icon name="trash"></ion-icon>
+          <span class="tooltiptext">Delete</span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-footer>

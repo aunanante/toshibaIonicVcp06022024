@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Commerces
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <!-- First Row (List of Commerces) -->
+    <ion-row class="first-row">
+      <ion-col size="12">
+        <ion-content scroll-y="true" style="height: 100px;"> <!-- Set the desired height -->
+          <ion-list>
+            <ion-item *ngFor="let commerce of commerces" [ngClass]="{'selected-commerce': commerce === currentCommerce}" (click)="selectCommerce(commerce)">
+              <ion-label [style.font-weight]="'bold'" [style.color]="commerce === currentCommerce ? 'brown' : 'initial'">{{ commerce.commercename }}</ion-label>
+            </ion-item>           
+          </ion-list>
+        </ion-content>
+      </ion-col>
+    </ion-row>
+
+
+    <!-- Second Row (Form for CRUD) -->
+    <ion-row class="second-row">
+      <ion-col size="12">
+        <form [formGroup]="commerceForm">
+          <!-- Form fields go here -->
+          <ion-item>
+            <ion-label class="bold-red-label">Commerce Name : </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="commercename"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="bold-red-label">Services : </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-textarea formControlName="services" rows="6"></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="bold-red-label">Ville : </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <!-- <ion-label class="bold-red-label">Ville</ion-label> -->
+            <ion-select
+              formControlName="ville_id"
+              (ionChange)="onVilleChange($event)"
+              class="custom-select" 
+            >
+              <ion-select-option value="">Select a Ville</ion-select-option>
+              <ion-select-option *ngFor="let ville of villes" [value]="ville.id" class="custom-select-option">
+                {{ ville.villename }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          
+
+          <ion-item>
+            <ion-label class="bold-red-label">Business Owner ID</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="business_owner_id"></ion-input>
+          </ion-item>
+
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="myColor">
+  <div class="form-buttons">
+    <!-- Buttons for submit, update, delete, and new -->
+    <ion-row class="ion-align-items-center">
+      <ion-col size="3">
+        <button (click)="createCommerce()" [disabled]="!commerceForm.valid" class="tooltip">
+          <ion-icon name="add-circle"></ion-icon>
+          <span class="tooltiptext">Submit</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="updateCommerce()" [disabled]="!commerceForm.valid" class="tooltip">
+          <ion-icon name="create"></ion-icon>
+          <span class="tooltiptext">Update</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="deleteCommerce()" [disabled]="!commerceForm.valid" class="tooltip">
+          <ion-icon name="trash-bin"></ion-icon>
+          <span class="tooltiptext">Delete</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="resetForm()" [disabled]="false" class="tooltip">
+          <ion-icon name="refresh"></ion-icon>
+          <span class="tooltiptext">New</span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>

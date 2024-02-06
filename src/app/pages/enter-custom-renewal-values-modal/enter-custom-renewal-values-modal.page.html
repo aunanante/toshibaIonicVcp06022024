@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Payments
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="warning">
+  <ion-grid>
+    <ion-row class="first-row">
+      <ion-col size="12">
+        <form [formGroup]="customPaymentForm">
+          <ion-item>
+            <ion-label class="red-bold-label">Duration (months)</ion-label>
+            <ion-radio-group formControlName="durationMonths" (ionChange)="onDurationChange($event)">
+              <ion-row>
+                <ion-col size="4">
+                  <ion-item> 
+                    <ion-radio value="0.1" labelPlacement="stacked" alignment="start">0.1</ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-item>
+                    <ion-radio value="0.5" labelPlacement="stacked" alignment="start">0.5</ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-item>
+                    <ion-radio value="1" labelPlacement="stacked" alignment="start">1</ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-radio-group>
+          </ion-item>
+          
+          <!-- <ion-item>
+            <ion-label class="red-bold-label">Payment Date</ion-label>
+            <ion-datetime
+              formControlName="paymentDate"
+              displayFormat="YYYY-MM-DD"
+              placeholder="Select Date"
+              min="{{ currentDate | date:'yyyy-MM-dd' }}"
+              (ionChange)="onPaymentDateChange()">
+            </ion-datetime>
+          </ion-item> -->
+
+          <ion-item>
+            <ion-label class="red-bold-label">Payment Date</ion-label>
+            <ion-datetime
+              formControlName="paymentDate"
+              displayFormat="YYYY-MM-DD"
+              placeholder="Select Date"
+              (ionChange)="onPaymentDateChange()">
+            </ion-datetime>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label class="red-bold-label">Amount</ion-label>
+            <ion-input formControlName="amount" readonly></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="red-bold-label">Expiry Date</ion-label>
+            <ion-input formControlName="expiryDate" readonly></ion-input>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- Modal Footer with Cancel and Confirm buttons -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-row class="button-row">
+      <ion-col>
+        <ion-button (click)="onCancel()" expand="full" color="danger">Cancel</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="onConfirm()" expand="full" color="success">Confirm</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

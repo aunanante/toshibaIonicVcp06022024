@@ -1,0 +1,107 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>user</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content >
+  <ion-grid>
+    <!-- First Row (List of Business Owners) -->
+    <ion-row class="first-row" >
+      <ion-col size="12">
+        <ion-list>
+          <ion-item *ngFor="let owner of businessOwners" [class.selected]="owner === selectedBusinessOwner" (click)="selectBusinessOwner(owner)">
+            <ion-label class="bold-text">{{ owner.email }}</ion-label>
+          </ion-item>          
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <!-- Second Row (Form for CRUD) -->
+    <ion-row class="second-row">
+      <ion-col size="12">
+        <form [formGroup]="businessOwnerForm">
+          <ion-item>
+            <ion-label class="red-bold-label">Email</ion-label>
+            <ion-input formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <!-- <ion-label class="red-bold-label">Telephone 2</ion-label>
+            <ion-input formControlName="telephone2"></ion-input> -->
+          </ion-item>
+          <ion-item>
+            <ion-label class="red-bold-label">Name : </ion-label>
+            <ion-input formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <!-- <ion-label class="red-bold-label">Telephone 2</ion-label>
+            <ion-input formControlName="telephone2"></ion-input> -->
+          </ion-item>
+          <ion-item>
+            <ion-label class="red-bold-label">Adresse : </ion-label>
+            <ion-input formControlName="adresse"></ion-input>
+          </ion-item>
+          <ion-item>
+            <!-- <ion-label class="red-bold-label">Telephone 2</ion-label>
+            <ion-input formControlName="telephone2"></ion-input> -->
+          </ion-item>
+          <ion-item>
+            <ion-label class="red-bold-label">Telephone1 : </ion-label>
+            <ion-input formControlName="telephone1"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <!-- <ion-label class="red-bold-label">Telephone2 : </ion-label>
+            <ion-input formControlName="telephone2"></ion-input> -->
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="red-bold-label">Telephone2 : </ion-label>
+            <ion-input formControlName="telephone2"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="red-bold-label">Monthly Fee Paid : </ion-label>
+            <ion-input formControlName="monthly_fee_paid" [readonly]="true"></ion-input>
+          </ion-item>
+          
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- Footer section for form buttons -->
+<ion-footer class="myColor">
+  <div class="form-buttons">
+    <!-- Buttons for submit, update, delete, and new -->
+    <ion-row class="ion-align-items-center">
+      <ion-col size="3">
+        <button (click)="createBusinessOwner()"  class="tooltip">
+          <ion-icon name="add-circle"></ion-icon>
+          <span class="tooltiptext">Submit</span>
+        </button>
+      </ion-col> 
+      <ion-col size="3">
+        <button (click)="updateBusinessOwner()"  class="tooltip">
+          <ion-icon name="create"></ion-icon>
+          <span class="tooltiptext">Update</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="deleteBusinessOwner()"  class="tooltip">
+          <ion-icon name="trash-bin"></ion-icon>
+          <span class="tooltiptext">Delete</span>
+        </button>
+      </ion-col>
+      <ion-col size="3">
+        <button (click)="resetForm()" class="tooltip">
+          <ion-icon name="refresh"></ion-icon>
+          <span class="tooltiptext">New</span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>
+
+
